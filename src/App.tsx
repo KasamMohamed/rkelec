@@ -280,7 +280,7 @@ export default function App() {
           <div className="text-center max-w-4xl mx-auto mb-24">
             <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-slate-800">Nos Services Électriques</h2>
             <p className="text-xl md:text-2xl text-slate-600 font-light leading-relaxed">
-              Des solutions électriques modernes, pensées pour votre confort et votre sécurité, <span className="text-electric-yellow font-medium">adaptées aux exigences de Morez, Morbier et des Rousses.</span>
+              Des solutions électriques modernes, pensées pour votre confort et votre sécurité, <span className="text-yellow-500 font-semibold">adaptées aux exigences de Morez, Morbier et des Rousses.</span>
             </p>
           </div>
 
@@ -452,7 +452,7 @@ export default function App() {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-800">Zone d'intervention</h2>
               <p className="text-slate-600 mb-8 text-lg leading-relaxed">
-                Artisan électricien basé près de Morez, j'interviens quotidiennement sur le secteur de Morbier et de la station des Rousses. Le climat montagnard exige des installations robustes et un chauffage électrique performant.
+                Entreprise d'électricité basée près de Morez, RK Électricité intervient quotidiennement sur le secteur de Morbier et de la station des Rousses. Le climat montagnard exige des installations robustes et un chauffage électrique performant.
               </p>
               
               <div className="mb-8">
@@ -482,7 +482,7 @@ export default function App() {
 
               <div className="p-6 bg-slate-50 rounded-2xl border-l-4 border-l-electric-yellow shadow-sm">
                 <p className="italic text-slate-600 text-sm">
-                  "Mon engagement : une transparence totale sur les devis et un travail soigné qui respecte votre intérieur."
+                  "Notre engagement : une transparence totale sur les devis et un travail soigné qui respecte votre intérieur."
                 </p>
               </div>
             </div>
