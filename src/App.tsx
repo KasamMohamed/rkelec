@@ -168,7 +168,7 @@ export default function App() {
               <a href="#zone" className={`text-sm font-medium hover:text-electric-yellow transition-colors ${isScrolled ? 'text-slate-700' : 'text-white'}`}>Zone d'intervention</a>
               <a href="#portfolio" className={`text-sm font-medium hover:text-electric-yellow transition-colors ${isScrolled ? 'text-slate-700' : 'text-white'}`}>Réalisations</a>
               <a href="#contact" className={`text-sm font-medium hover:text-electric-yellow transition-colors ${isScrolled ? 'text-slate-700' : 'text-white'}`}>Contact</a>
-              <a href="#contact" className="px-5 py-2.5 bg-electric-yellow text-night-blue font-semibold rounded-full hover:bg-electric-yellow-hover transition-all flex items-center gap-2">
+              <a href="tel:0782800552" className="px-5 py-2.5 bg-electric-yellow text-night-blue font-semibold rounded-full hover:bg-electric-yellow-hover transition-all flex items-center gap-2">
                 <Phone className="w-4 h-4" />
                 <span>07 82 80 05 52</span>
               </a>
@@ -193,7 +193,7 @@ export default function App() {
               <a href="#zone" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-base font-medium text-slate-800 hover:text-electric-yellow">Zone d'intervention</a>
               <a href="#portfolio" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-base font-medium text-slate-800 hover:text-electric-yellow">Réalisations</a>
               <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-base font-medium text-slate-800 hover:text-electric-yellow">Contact</a>
-              <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="mt-4 px-5 py-3 bg-electric-yellow text-night-blue font-semibold rounded-lg text-center flex items-center justify-center gap-2">
+              <a href="tel:0782800552" onClick={() => setMobileMenuOpen(false)} className="mt-4 px-5 py-3 bg-electric-yellow text-night-blue font-semibold rounded-lg text-center flex items-center justify-center gap-2">
                 <Phone className="w-5 h-5" />
                 <span>07 82 80 05 52</span>
               </a>
@@ -258,14 +258,14 @@ export default function App() {
             >
               <div className="glass-dark p-8 rounded-3xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-electric-yellow/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
-                <h3 className="text-2xl font-semibold mb-6">Intervention d'urgence</h3>
+                <h2 className="text-2xl font-semibold mb-6">Intervention d'urgence</h2>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-full bg-electric-yellow/20 flex items-center justify-center shrink-0">
                       <Clock className="w-6 h-6 text-electric-yellow" />
                     </div>
                     <div>
-                      <h4 className="font-medium text-lg">Réactivité maximale</h4>
+                      <h3 className="font-medium text-lg">Réactivité maximale</h3>
                       <p className="text-gray-400 text-sm mt-1">Dépannage rapide sur Morez, Les Rousses et Saint-Laurent-en-Grandvaux.</p>
                     </div>
                   </div>
@@ -274,7 +274,7 @@ export default function App() {
                       <ShieldCheck className="w-6 h-6 text-electric-yellow" />
                     </div>
                     <div>
-                      <h4 className="font-medium text-lg">Garantie Décennale</h4>
+                      <h3 className="font-medium text-lg">Garantie Décennale</h3>
                       <p className="text-gray-400 text-sm mt-1">Toutes nos interventions sont couvertes et certifiées.</p>
                     </div>
                   </div>
