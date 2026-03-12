@@ -23,12 +23,7 @@ export default defineConfig(({mode}) => {
     build: {
       rollupOptions: {
         output: {
-          manualChunks: {
-            'react-vendor': ['react', 'react-dom'],
-            'motion-vendor': ['motion/react'],
-            'lucide-vendor': ['lucide-react'],
-            'lenis-vendor': ['lenis']
-          }
+          // Let Vite handle chunking automatically
         }
       }
     }
