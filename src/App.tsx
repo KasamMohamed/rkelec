@@ -207,8 +207,8 @@ export default function App() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1544885935-98dd03b09034?q=40&w=800&auto=format,compress&fit=crop" 
-            srcSet="https://images.unsplash.com/photo-1544885935-98dd03b09034?q=40&w=400&auto=format,compress&fit=crop 400w, https://images.unsplash.com/photo-1544885935-98dd03b09034?q=40&w=800&auto=format,compress&fit=crop 800w, https://images.unsplash.com/photo-1544885935-98dd03b09034?q=40&w=1200&auto=format,compress&fit=crop 1200w, https://images.unsplash.com/photo-1544885935-98dd03b09034?q=40&w=2000&auto=format,compress&fit=crop 2000w"
+            src="https://images.unsplash.com/photo-1544885935-98dd03b09034?q=20&w=400&auto=format,compress&fit=crop" 
+            srcSet="https://images.unsplash.com/photo-1544885935-98dd03b09034?q=20&w=320&auto=format,compress&fit=crop 320w, https://images.unsplash.com/photo-1544885935-98dd03b09034?q=20&w=640&auto=format,compress&fit=crop 640w, https://images.unsplash.com/photo-1544885935-98dd03b09034?q=30&w=1024&auto=format,compress&fit=crop 1024w, https://images.unsplash.com/photo-1544885935-98dd03b09034?q=40&w=2000&auto=format,compress&fit=crop 2000w"
             sizes="100vw"
             alt="Montagnes du Jura" 
             className="w-full h-full object-cover opacity-30"
