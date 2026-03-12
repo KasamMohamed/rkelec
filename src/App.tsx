@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { m, LazyMotion } from 'motion/react';
 
 const loadFeatures = () => import('motion/react').then(res => res.domAnimation);
-import Lenis from 'lenis';
-import 'lenis/dist/lenis.css';
 import { 
   Zap, 
   Home, 
@@ -29,50 +27,62 @@ export default function App() {
 
   // Smooth Scrolling Setup
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-    });
+    let lenisInstance: any;
+    let animationFrameId: number;
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    // Handle smooth scrolling for anchor links
-    const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest('a');
+    import('lenis').then(({ default: Lenis }) => {
+      import('lenis/dist/lenis.css');
       
-      if (anchor) {
-        const href = anchor.getAttribute('href');
-        if (href === '#') {
-          e.preventDefault();
-          lenis.scrollTo(0, { duration: 1.5 });
-        } else if (href && href.startsWith('#') && href.length > 1) {
-          const id = href.substring(1);
-          const element = document.getElementById(id);
-          if (element) {
+      lenisInstance = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 2,
+      });
+
+      function raf(time: number) {
+        lenisInstance.raf(time);
+        animationFrameId = requestAnimationFrame(raf);
+      }
+
+      animationFrameId = requestAnimationFrame(raf);
+
+      // Handle smooth scrolling for anchor links
+      const handleAnchorClick = (e: MouseEvent) => {
+        const target = e.target as HTMLElement;
+        const anchor = target.closest('a');
+        
+        if (anchor) {
+          const href = anchor.getAttribute('href');
+          if (href === '#') {
             e.preventDefault();
-            lenis.scrollTo(element, { offset: -80, duration: 1.5 });
-            setMobileMenuOpen(false);
+            lenisInstance.scrollTo(0, { duration: 1.5 });
+          } else if (href && href.startsWith('#') && href.length > 1) {
+            const id = href.substring(1);
+            const element = document.getElementById(id);
+            if (element) {
+              e.preventDefault();
+              lenisInstance.scrollTo(element, { offset: -80, duration: 1.5 });
+              setMobileMenuOpen(false);
+            }
           }
         }
-      }
-    };
+      };
 
-    document.addEventListener('click', handleAnchorClick);
+      document.addEventListener('click', handleAnchorClick);
+
+      // Cleanup function for the event listener inside the promise
+      return () => {
+        document.removeEventListener('click', handleAnchorClick);
+      };
+    });
 
     return () => {
-      lenis.destroy();
-      document.removeEventListener('click', handleAnchorClick);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      if (lenisInstance) lenisInstance.destroy();
     };
   }, []);
 
@@ -89,7 +99,7 @@ export default function App() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
