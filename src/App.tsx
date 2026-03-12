@@ -165,6 +165,7 @@ export default function App() {
             <button 
               className={`md:hidden ${isScrolled ? 'text-slate-900' : 'text-white'}`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -193,7 +194,7 @@ export default function App() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1544885935-98dd03b09034?q=80&w=2000&auto=format&fit=crop" 
+            src="https://images.unsplash.com/photo-1544885935-98dd03b09034?q=60&w=1200&auto=format&fit=crop" 
             alt="Montagnes du Jura" 
             className="w-full h-full object-cover opacity-30"
             referrerPolicy="no-referrer"
@@ -489,7 +490,7 @@ export default function App() {
 
             <div className="relative h-[400px] rounded-3xl overflow-hidden bg-slate-50 shadow-xl p-2 border border-slate-200">
               <img 
-                src="https://images.unsplash.com/photo-1635335874521-7987db781153?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                src="https://images.unsplash.com/photo-1635335874521-7987db781153?q=60&w=1080&auto=format&fit=crop" 
                 alt="Fils électriques et boîtier de commutation" 
                 className="w-full h-full object-cover rounded-2xl"
                 referrerPolicy="no-referrer"
@@ -707,15 +708,15 @@ export default function App() {
                 RK ELECTRICITE
               </span>
             </div>
-            <p className="text-gray-500 text-sm text-center md:text-left">
+            <p className="text-slate-300 text-sm text-center md:text-left">
               © {new Date().getFullYear()} RK ELECTRICITE - Artisan Électricien intervenant sur Morez, Morbier, Les Rousses (39400, 39220). Tous droits réservés.
             </p>
-            <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-gray-400">
+            <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-slate-300">
               <div className="flex gap-4">
                 <a href="#" className="hover:text-white transition-colors">Mentions légales</a>
                 <a href="#" className="hover:text-white transition-colors">Politique de confidentialité</a>
               </div>
-              <span className="hidden md:inline text-gray-600">|</span>
+              <span className="hidden md:inline text-slate-500">|</span>
               <p>
                 Création site web par <a href="https://k-vizion.fr" target="_blank" rel="noopener noreferrer" className="text-electric-yellow hover:text-electric-yellow-hover font-semibold transition-colors">K-VIZION</a>
               </p>
