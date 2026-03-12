@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { m, LazyMotion } from 'motion/react';
+
+const loadFeatures = () => import('motion/react').then(res => res.domAnimation);
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 import { 
@@ -137,7 +139,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-800 selection:bg-electric-yellow selection:text-night-blue">
+    <LazyMotion features={loadFeatures}>
+      <div className="min-h-screen bg-slate-100 text-slate-800 selection:bg-electric-yellow selection:text-night-blue">
       {/* Navbar */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'glass-light py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -194,17 +197,21 @@ export default function App() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1544885935-98dd03b09034?q=60&w=1200&auto=format&fit=crop" 
+            src="https://images.unsplash.com/photo-1544885935-98dd03b09034?q=40&w=800&auto=format,compress&fit=crop" 
+            srcSet="https://images.unsplash.com/photo-1544885935-98dd03b09034?q=40&w=400&auto=format,compress&fit=crop 400w, https://images.unsplash.com/photo-1544885935-98dd03b09034?q=40&w=800&auto=format,compress&fit=crop 800w, https://images.unsplash.com/photo-1544885935-98dd03b09034?q=40&w=1200&auto=format,compress&fit=crop 1200w, https://images.unsplash.com/photo-1544885935-98dd03b09034?q=40&w=2000&auto=format,compress&fit=crop 2000w"
+            sizes="100vw"
             alt="Montagnes du Jura" 
             className="w-full h-full object-cover opacity-30"
             referrerPolicy="no-referrer"
+            fetchPriority="high"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-night-blue/80 via-night-blue/60 to-night-blue"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-10 md:mt-0">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -230,10 +237,10 @@ export default function App() {
                   Découvrir nos services
                 </a>
               </div>
-            </motion.div>
+            </m.div>
 
             {/* Glassmorphism Info Card */}
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -269,7 +276,7 @@ export default function App() {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -355,7 +362,7 @@ export default function App() {
 
           {/* Standout CTA */}
           <div className="mt-16 text-center">
-            <motion.div 
+            <m.div 
               className="inline-block relative group"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -374,7 +381,7 @@ export default function App() {
                   <ChevronRight className="w-5 h-5 group-hover:text-night-blue group-hover:translate-x-1 transition-all duration-300" />
                 </div>
               </a>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -491,9 +498,12 @@ export default function App() {
             <div className="relative h-[400px] rounded-3xl overflow-hidden bg-slate-50 shadow-xl p-2 border border-slate-200">
               <img 
                 src="https://images.unsplash.com/photo-1635335874521-7987db781153?q=60&w=1080&auto=format&fit=crop" 
+                srcSet="https://images.unsplash.com/photo-1635335874521-7987db781153?q=60&w=600&auto=format&fit=crop 600w, https://images.unsplash.com/photo-1635335874521-7987db781153?q=60&w=1080&auto=format&fit=crop 1080w"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 alt="Fils électriques et boîtier de commutation" 
                 className="w-full h-full object-cover rounded-2xl"
                 referrerPolicy="no-referrer"
+                loading="lazy"
               />
               <div className="absolute bottom-6 left-6 right-6 bg-slate-50/90 backdrop-blur-md p-4 rounded-xl flex items-center justify-between shadow-lg border border-slate-200/50">
                 <div>
@@ -529,6 +539,7 @@ export default function App() {
                 alt="Tableau électrique neuf" 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 referrerPolicy="no-referrer"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-night-blue via-night-blue/40 to-transparent opacity-80"></div>
               <div className="absolute bottom-0 left-0 w-full p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -544,6 +555,7 @@ export default function App() {
                 alt="Chauffage électrique et thermostat" 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 referrerPolicy="no-referrer"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-night-blue via-night-blue/40 to-transparent opacity-80"></div>
               <div className="absolute bottom-0 left-0 w-full p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -559,6 +571,7 @@ export default function App() {
                 alt="Éclairage intérieur" 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 referrerPolicy="no-referrer"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-night-blue via-night-blue/40 to-transparent opacity-80"></div>
               <div className="absolute bottom-0 left-0 w-full p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -665,17 +678,17 @@ export default function App() {
 
                 {/* Status Messages */}
                 {formStatus === 'success' && (
-                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-start gap-3">
+                  <m.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
                     <p className="text-emerald-200 text-sm">Votre message a été envoyé avec succès. Nous vous recontacterons très rapidement !</p>
-                  </motion.div>
+                  </m.div>
                 )}
 
                 {formStatus === 'error' && (
-                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl flex items-start gap-3">
+                  <m.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl flex items-start gap-3">
                     <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
                     <p className="text-red-200 text-sm">Une erreur est survenue lors de l'envoi. Veuillez nous contacter directement par téléphone.</p>
-                  </motion.div>
+                  </m.div>
                 )}
 
                 <button 
@@ -724,6 +737,7 @@ export default function App() {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+    </LazyMotion>
   );
 }
